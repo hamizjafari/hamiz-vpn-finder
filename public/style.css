@@ -1,0 +1,423 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: whitesmoke;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+
+.header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 40px;
+  text-align: center;
+}
+
+.header h1 {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+}
+
+.header p {
+  font-size: 1.1em;
+  opacity: 0.9;
+}
+
+.form-container {
+  padding: 40px;
+}
+
+.form-group {
+  margin-bottom: 30px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 600;
+  color: #333;
+  font-size: 1.1em;
+}
+
+select,
+input[type="text"] {
+  width: 100%;
+  padding: 15px;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  font-size: 1em;
+  transition: all 0.3s;
+}
+
+select:focus,
+input[type="text"]:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.url-options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+@media (max-width: 768px) {
+  .url-options {
+    gap: 8px;
+  }
+
+  .radio-label {
+    padding: 12px;
+    font-size: 0.95em;
+  }
+
+  select,
+  input[type="text"] {
+    padding: 12px;
+  }
+
+  .btn-primary {
+    padding: 15px;
+    font-size: 1.1em;
+  }
+}
+
+.radio-label {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.radio-label:hover {
+  border-color: #667eea;
+  background: #f8f9ff;
+}
+
+.radio-label input {
+  margin-right: 12px;
+  cursor: pointer;
+}
+
+.radio-label input:checked + span {
+  color: #667eea;
+  font-weight: 600;
+}
+
+.btn-primary {
+  width: 100%;
+  padding: 18px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.2em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-refresh:hover {
+  /* background: #000; */
+  /* background: linear-gradient(-135deg, #000 0%, #666 50%); */
+  transition: all 0.2s;
+  opacity: 0.9;
+}
+
+.btn-refresh {
+  width: 100%;
+  padding: 10px;
+  /* background: #666; */
+  opacity: 0.7;
+  background: linear-gradient(135deg, #422 0%, #222 100%);
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  font-size: 1em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  color: white;
+  margin-top: 10px;
+}
+
+.loading {
+  text-align: center;
+  padding: 60px;
+  color: #667eea;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #667eea;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 20px;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loading p {
+  font-size: 1.2em;
+  font-weight: 600;
+}
+
+.results {
+  padding: 0 40px 40px;
+}
+
+.results h2 {
+  color: #333;
+  margin-bottom: 30px;
+  font-size: 2em;
+}
+
+.vpn-item {
+  background: #f8f9ff;
+  border: 2px solid #e0e0e0;
+  border-radius: 15px;
+  padding: 25px;
+  margin-bottom: 20px;
+  transition: all 0.3s;
+}
+
+.vpn-item:hover {
+  border-color: #667eea;
+  box-shadow: 0 5px 20px rgba(102, 126, 234, 0.2);
+}
+
+.vpn-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.vpn-item h3 {
+  color: #333;
+  font-size: 1.4em;
+}
+
+.latency-badge {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.9em;
+}
+
+.vpn-item-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.vpn-item-info div {
+  padding: 10px;
+  background: white;
+  border-radius: 8px;
+}
+
+.vpn-item-info strong {
+  display: block;
+  color: #667eea;
+  margin-bottom: 5px;
+  font-size: 0.9em;
+}
+
+.config-link {
+  background: #f0f0f0;
+  padding: 15px;
+  border-radius: 10px;
+  border: 2px dashed #ccc;
+  word-break: break-all;
+  font-family: "Courier New", monospace;
+  font-size: 0.85em;
+  color: #333;
+  position: relative;
+}
+
+.copy-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #667eea;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.85em;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.copy-btn:hover {
+  background: #5568d3;
+}
+
+.copy-btn.copied {
+  background: #28a745;
+}
+
+.error {
+  background: #ffe6e6;
+  color: #d32f2f;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 20px 40px;
+  border: 2px solid #ffcdd2;
+  font-weight: 600;
+}
+
+.stats {
+  text-align: center;
+  padding: 20px;
+  background: #f0f0f0;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  color: #666;
+}
+
+.stats strong {
+  color: #667eea;
+}
+
+.subscription-box {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  border: 3px solid #667eea;
+  border-radius: 15px;
+  padding: 25px;
+  margin: 30px 0;
+}
+
+.subscription-box h3 {
+  color: #333;
+  margin-bottom: 10px;
+  font-size: 1.4em;
+}
+
+.subscription-box p {
+  color: #666;
+  margin-bottom: 5px;
+}
+
+.subscription-note {
+  font-size: 0.9em;
+  color: #888;
+  font-style: italic;
+  margin-top: 10px;
+}
+
+@media (max-width: 600px) {
+  body {
+    padding: 10px;
+  }
+
+  .container {
+    margin: 0;
+    border-radius: 15px;
+  }
+
+  .header {
+    padding: 30px 20px;
+  }
+
+  .header h1 {
+    font-size: 1.8em;
+  }
+
+  .header p {
+    font-size: 1em;
+  }
+
+  .form-container {
+    padding: 20px;
+  }
+
+  .results {
+    padding: 0 20px 20px;
+  }
+
+  .vpn-item {
+    padding: 20px;
+  }
+
+  .vpn-item-info {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .vpn-item-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .latency-badge {
+    align-self: flex-start;
+  }
+
+  .subscription-box {
+    padding: 20px;
+  }
+
+  .subscription-box h3 {
+    font-size: 1.2em;
+  }
+
+  .config-link {
+    font-size: 0.75em;
+    padding: 12px 80px 12px 12px;
+  }
+
+  .copy-btn {
+    position: relative;
+    top: 5px;
+    right: 5px;
+    padding: 6px 12px;
+    font-size: 0.8em;
+  }
+}

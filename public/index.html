@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VPN Server Finder</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>🚀 Hamiz VPN Finder</h1>
+        <p>Find the fastest VPN servers</p>
+        <p style="margin-top: 15px">Me On Social Media 👇</p>
+        <div
+          style="
+            display: flex;
+            font-weight: bold;
+            gap: 10px;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10px;
+          "
+        >
+          <a href="https://instagram.com/hamiz.jafari" target="_blank">
+            Instagram
+          </a>
+          <span style="font-size: 0.9em; font-weight: 600; color: #667eea"
+            >🔗</span
+          >
+          <a href="https://telegram.com/hamizjafari" target="_blank">
+            Telegram
+          </a>
+        </div>
+      </div>
+
+      <div class="form-container">
+        <form id="vpnForm">
+          <div class="form-group">
+            <label for="country">Select Country:</label>
+            <select id="country" name="country" required>
+              <option value="">Loading...</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Test URL:</label>
+            <div class="url-options">
+              <label class="radio-label">
+                <input type="radio" name="urlType" value="telegram" checked />
+                <span>📱 Telegram (web.telegram.org)</span>
+              </label>
+              <label class="radio-label">
+                <input type="radio" name="urlType" value="instagram" />
+                <span>📷 Instagram (instagram.com)</span>
+              </label>
+              <label class="radio-label">
+                <input type="radio" name="urlType" value="custom" />
+                <span>🔗 Custom URL</span>
+              </label>
+            </div>
+            <input
+              type="text"
+              id="customUrl"
+              name="customUrl"
+              placeholder="https://example.com"
+              style="display: none"
+            />
+          </div>
+
+          <button type="submit" class="btn-primary">
+            🔍 Find Best VPN Servers
+          </button>
+        </form>
+
+        <button type="submit" onclick="loadCountries()" class="btn-refresh">
+          🔍 Refresh Countries
+        </button>
+      </div>
+
+      <div id="loading" class="loading" style="display: none">
+        <div class="spinner"></div>
+        <p>Testing servers...</p>
+      </div>
+
+      <div id="results" class="results" style="display: none">
+        <h2>🏆 Best VPN Servers</h2>
+        <div id="resultsContent"></div>
+      </div>
+
+      <div id="error" class="error" style="display: none"></div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
