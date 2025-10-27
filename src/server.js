@@ -1,13 +1,13 @@
 import express from "express";
 import https from "https";
 import net from "net";
-import { promisify } from "util";
-import dns from "dns";
+// import dns from "dns";
+// import { promisify } from "util";
 
-const dnsLookup = promisify(dns.lookup);
+// const dnsLookup = promisify(dns.lookup);
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 app.use(express.static("public"));
@@ -570,6 +570,19 @@ app.get("/api/hiddify", async (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`🚀 VPN Filter Server running at http://localhost:${PORT}`);
-});
+app
+  .listen(PORT, () => {
+    console.log(`🚀 VPN Filter Server running at http://localhost:${PORT}`);
+    console.log(`Server is ready on port ${PORT}`);
+  })
+  .on("error", (err) => {
+    if (err.code === "EADDRINUSE") {
+      console.error(`❌ Port ${PORT} is already in use.`);
+      console.error("Please stop the existing server or use a different port.");
+      console.error(`To use a different port, set PORT environment variable:`);
+      console.error(`PORT=${PORT + 1} node src/server.js`);
+    } else {
+      console.error("Server error:", err);
+    }
+    process.exit(1);
+  });
